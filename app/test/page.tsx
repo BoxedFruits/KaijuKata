@@ -40,7 +40,7 @@ export default function Page() {
     <div>
       <div className="flex mx-3 my-2">
         {
-          test.lessonName.map((value, index) => {
+          test.lessonName.tabs.map((value, index) => {
             console.log(value.correctValue, value.correctValue ?? false)
             return (
               <div className="flex mr-8">
