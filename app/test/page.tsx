@@ -1,5 +1,5 @@
 "use client"
-import * as test from "../../data/test.json"
+import * as test from "../../data/test.json" //TODO: this should come from an api
 
 import Editor, { Monaco, DiffEditor } from "@monaco-editor/react"
 import { type editor } from 'monaco-editor';
