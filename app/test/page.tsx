@@ -9,6 +9,7 @@ export default function Page() {
   console.log(test.lessonName[0])
   const [currentInput, setCurrentInput] = useState("")
   const [checkedInput, setCheckedInput] = useState(false)
+  const [isReadOnly, setIsReadOnly] = useState(false)
 
   const goal = "pragma solidity ^0.8.0;"
   const monacoRef = useRef<Monaco | null>(null);
@@ -28,23 +29,27 @@ export default function Page() {
     setCurrentInput(editorRef.current.getValue())
   }
 
-  const handleTabChange = (newText: string) => {
+  const handleTabChange = (newText: string, readOnly: boolean) => {
     setCheckedInput(false)
     setCurrentInput(newText)
+    setIsReadOnly(readOnly)
   }
-console.log(currentInput)
+
+  console.log(isReadOnly)
   return (
     <div>
       <div className="flex mx-3 my-2">
         {
           test.lessonName.map((value, index) => {
+            console.log(value.correctValue, value.correctValue ?? false)
             return (
               <div className="flex mr-8">
                 <label for={`tab-${index}`}>{value.tabName}</label>
                 <input
                   type="radio"
                   name="tabs" id={`tab-${index}`}
-                  onClick={() => handleTabChange(value.defaultValue)}
+                  onClick={() => handleTabChange(value.defaultValue,
+                    value.correctValue ?? false ? false : true)}
                 />
               </div>
             )
@@ -57,7 +62,7 @@ console.log(currentInput)
         language="sol"
         beforeMount={handleEditorWillMount}
         onMount={handleEditorDidMount}
-        options={{ minimap: { enabled: false } }}
+        options={{ minimap: { enabled: false }, readOnly: isReadOnly }}
       />
       <DiffEditor
         original={currentInput !== "" && checkedInput ? currentInput : ""}
@@ -65,7 +70,6 @@ console.log(currentInput)
         height="15vh"
         width="100%"
         language="sol"
-
         options={{ renderSideBySide: false, minimap: { enabled: false } }}
       />
       <button onClick={handleCheckedInput}>Click me</button>
