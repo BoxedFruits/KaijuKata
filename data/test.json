@@ -1,0 +1,13 @@
+{
+    "lessonName": [
+        {
+            "tabName": "test1",
+            "defaultValue": "test1blahblah"
+        },
+        {
+            "tabName": "test2",
+            "defaultValue": "test2blahblah",
+            "correctValue": "test2bluhbers"
+        }
+    ]
+}
