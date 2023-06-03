@@ -49,7 +49,7 @@ export default function Page() {
                   type="radio"
                   name="tabs" id={`tab-${index}`}
                   onClick={() => handleTabChange(value.defaultValue,
-                    value.correctValue ?? false ? false : true)}
+                    value.correctValue !== undefined ? false : true)}
                 />
               </div>
             )
