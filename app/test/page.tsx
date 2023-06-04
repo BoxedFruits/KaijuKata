@@ -17,6 +17,7 @@ export default function Page() {
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
 
   useEffect(() => {
+    //@ts-ignore
     document.querySelector(`[data-id="${toBeSelectedId}"]`).checked = true;
   }, [toBeSelectedId])
 
@@ -33,7 +34,7 @@ export default function Page() {
   const handleCheckedInput = () => {
     if (isReadOnly !== true) {
       setCheckedInput(true)
-      setCurrentInput(editorRef?.current.getValue())
+      setCurrentInput(editorRef!.current!.getValue())
     }
   }
 
