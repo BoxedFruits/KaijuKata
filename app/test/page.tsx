@@ -6,7 +6,6 @@ import { type editor } from 'monaco-editor';
 import { useRef, useState } from "react"
 
 export default function Page() {
-  console.log(test.lessonName[0])
   const [currentInput, setCurrentInput] = useState("")
   const [checkedInput, setCheckedInput] = useState(false)
   const [isReadOnly, setIsReadOnly] = useState(false)
@@ -25,8 +24,10 @@ export default function Page() {
   }
 
   const handleCheckedInput = () => {
-    setCheckedInput(true)
-    setCurrentInput(editorRef.current.getValue())
+    if (isReadOnly !== true) {
+      setCheckedInput(true)
+      setCurrentInput(editorRef?.current.getValue())
+    }
   }
 
   const handleTabChange = (newText: string, readOnly: boolean) => {
@@ -34,28 +35,32 @@ export default function Page() {
     setCurrentInput(newText)
     setIsReadOnly(readOnly)
   }
-
-  console.log(isReadOnly)
+  console.log("RENDERED")
   return (
     <div>
       <div className="flex mx-3 my-2">
         {
           test.lessonName.tabs.map((value, index) => {
-            console.log(value.correctValue, value.correctValue ?? false)
+            console.log(test.lessonName.defaultTab === index, index)
             return (
-              <div className="flex mr-8">
-                <label for={`tab-${index}`}>{value.tabName}</label>
-                <input
-                  type="radio"
-                  name="tabs" id={`tab-${index}`}
-                  onClick={() => handleTabChange(value.defaultValue,
-                    value.correctValue !== undefined ? false : true)}
-                />
+              <div className="flex mr-8" key={`editor-tab-${index}`}>
+                <label htmlFor={`editor-tab-${index}`}>{value.tabName}
+                  <input
+                    type="radio"
+                    name="tabs"
+                    id={`editor-tab-${index}`}
+                    key={`editor-tab-${index}`}
+                    defaultChecked={test.lessonName.defaultTab === index}
+                    onClick={() => handleTabChange(value.defaultValue,
+                      value.correctValue !== undefined ? false : true)}
+                  />
+                </label>
               </div>
             )
           })}
       </div>
       <Editor
+        defaultValue={test.lessonName.tabs[test.lessonName.defaultTab].defaultValue}
         value={currentInput}
         height="80vh"
         width="100vw"
@@ -67,7 +72,7 @@ export default function Page() {
       <DiffEditor
         original={currentInput !== "" && checkedInput ? currentInput : ""}
         modified={currentInput !== "" && checkedInput ? goal : ""}
-        height="15vh"
+        height="12vh"
         width="100%"
         language="sol"
         options={{ renderSideBySide: false, minimap: { enabled: false } }}
