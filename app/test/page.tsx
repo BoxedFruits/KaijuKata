@@ -8,6 +8,7 @@ import { useEffect, useId, useRef, useState } from "react"
 export default function Page() {
   const [currentInput, setCurrentInput] = useState("")
   const [checkedInput, setCheckedInput] = useState(false)
+  const [correctValue, setCorrectValue] = useState("")
   const [currentTab, setCurrentTab] = useState(test.lessonName.defaultTab)
   const [isReadOnly, setIsReadOnly] = useState(false)
   const toBeSelectedId = useId(); //NOTE: this is only being used as there is a big with nextjs and the checked attribute. https://github.com/vercel/next.js/issues/49499
@@ -37,11 +38,12 @@ export default function Page() {
     }
   }
 
-  const handleTabChange = (newText: string, readOnly: boolean, index: number) => {
+  const handleTabChange = (newText: string, correctValue: string | undefined, index: number) => {
     setCheckedInput(false)
     setCurrentInput(newText)
-    setIsReadOnly(readOnly)
+    setIsReadOnly(correctValue !== undefined ? false : true)
     setCurrentTab(index)
+    setCorrectValue(correctValue !== undefined ? correctValue : "")
   }
 
   return (
@@ -59,8 +61,9 @@ export default function Page() {
                     key={`editor-tab-${index}`}
                     value={currentTab === index ? "on" : "off"}
                     data-id={test.lessonName.defaultTab === index ? toBeSelectedId : undefined}
-                    onClick={() => handleTabChange(value.defaultValue,
-                      value.correctValue !== undefined ? false : true,
+                    onClick={() => handleTabChange(
+                      value.defaultValue,
+                      value?.correctValue,
                       index
                     )}
                   />
@@ -81,7 +84,7 @@ export default function Page() {
       />
       <DiffEditor
         original={currentInput !== "" && checkedInput ? currentInput : ""}
-        modified={currentInput !== "" && checkedInput ? goal : ""}
+        modified={currentInput !== "" && checkedInput ? correctValue : ""}
         height="12vh"
         width="100%"
         language="sol"
