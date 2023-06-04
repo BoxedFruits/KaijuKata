@@ -12,7 +12,6 @@ export default function Page() {
   const [isReadOnly, setIsReadOnly] = useState(false)
   const toBeSelectedId = useId(); //NOTE: this is only being used as there is a big with nextjs and the checked attribute. https://github.com/vercel/next.js/issues/49499
 
-  const goal = "pragma solidity ^0.8.0;"
   const monacoRef = useRef<Monaco | null>(null);
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
 
