@@ -49,7 +49,6 @@ export default function Page() {
       <div className="flex mx-3 my-2">
         {
           test.lessonName.tabs.map((value, index) => {
-            console.log(test.lessonName.defaultTab === index, index, currentTab)
             return (
               <div className="flex mr-8" key={`editor-tab-${index}`}>
                 <label htmlFor={`editor-tab-${index}`}>{value.tabName}
