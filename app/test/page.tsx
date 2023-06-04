@@ -3,16 +3,23 @@ import * as test from "../../data/test.json" //TODO: this should come from an ap
 
 import Editor, { Monaco, DiffEditor } from "@monaco-editor/react"
 import { type editor } from 'monaco-editor';
-import { useRef, useState } from "react"
+import { useEffect, useId, useRef, useState } from "react"
 
 export default function Page() {
   const [currentInput, setCurrentInput] = useState("")
   const [checkedInput, setCheckedInput] = useState(false)
+  const [currentTab, setCurrentTab] = useState(test.lessonName.defaultTab)
   const [isReadOnly, setIsReadOnly] = useState(false)
+  const toBeSelectedId = useId(); //NOTE: this is only being used as there is a big with nextjs and the checked attribute. https://github.com/vercel/next.js/issues/49499
 
   const goal = "pragma solidity ^0.8.0;"
   const monacoRef = useRef<Monaco | null>(null);
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
+
+  useEffect(() => {
+    document.querySelector(`[data-id="${toBeSelectedId}"]`).checked = true;
+  }, [toBeSelectedId])
+
 
   function handleEditorWillMount(monaco: Monaco) {
     monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
@@ -30,18 +37,19 @@ export default function Page() {
     }
   }
 
-  const handleTabChange = (newText: string, readOnly: boolean) => {
+  const handleTabChange = (newText: string, readOnly: boolean, index: number) => {
     setCheckedInput(false)
     setCurrentInput(newText)
     setIsReadOnly(readOnly)
+    setCurrentTab(index)
   }
-  console.log("RENDERED")
+
   return (
     <div>
       <div className="flex mx-3 my-2">
         {
           test.lessonName.tabs.map((value, index) => {
-            console.log(test.lessonName.defaultTab === index, index)
+            console.log(test.lessonName.defaultTab === index, index, currentTab)
             return (
               <div className="flex mr-8" key={`editor-tab-${index}`}>
                 <label htmlFor={`editor-tab-${index}`}>{value.tabName}
@@ -50,9 +58,12 @@ export default function Page() {
                     name="tabs"
                     id={`editor-tab-${index}`}
                     key={`editor-tab-${index}`}
-                    defaultChecked={test.lessonName.defaultTab === index}
+                    value={currentTab === index ? "on" : "off"}
+                    data-id={test.lessonName.defaultTab === index ? toBeSelectedId : undefined}
                     onClick={() => handleTabChange(value.defaultValue,
-                      value.correctValue !== undefined ? false : true)}
+                      value.correctValue !== undefined ? false : true,
+                      index
+                    )}
                   />
                 </label>
               </div>
