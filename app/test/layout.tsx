@@ -8,7 +8,7 @@ const LessonLayout = ({
     return (
         <>
             <Navbar/>
-                <main>{children}</main>
+            <main>{children}</main>
         </>
     )
 }
