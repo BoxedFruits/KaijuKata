@@ -1,6 +1,5 @@
 //break this out into another component
 //page should handle the api call to get the data of the right half if needed, its state
-"use client"
 
 import EditorPanel from "../layout_components/editorPanel"
 import TwoPanelLayout from "../layout_components/twoPanelLayout"
