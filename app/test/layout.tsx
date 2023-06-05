@@ -5,7 +5,7 @@ const LessonLayout = ({
 }: {
     children: React.ReactNode
 }) => {
-    return (
+     return (
         <>
             <Navbar/>
             <main>{children}</main>
