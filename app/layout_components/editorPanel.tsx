@@ -82,7 +82,6 @@ const EditorPanel = () => {
         defaultValue={test.lessonName.tabs[test.lessonName.defaultTab].defaultValue}
         value={currentInput}
         height="80vh"
-        width="100vw"
         language="sol"
         beforeMount={handleEditorWillMount}
         onMount={handleEditorDidMount}
@@ -92,7 +91,6 @@ const EditorPanel = () => {
         original={currentInput !== "" && checkedInput ? currentInput : ""}
         modified={currentInput !== "" && checkedInput ? correctValue : ""}
         height="12vh"
-        width="100%"
         language="sol"
         options={{ renderSideBySide: false, minimap: { enabled: false } }}
       />

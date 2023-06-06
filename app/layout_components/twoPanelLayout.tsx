@@ -9,10 +9,10 @@ const TwoPanelLayout = ({
 
     return (
         <div className="flex flex-row">
-            <div className="w-1/2">
+            <div className="w-1/2 left-panel">
                 {childrenArray[0]}
             </div>
-            <div className="w-1/2">
+            <div className="w-1/2 right-panel">
                 {childrenArray[1]}
             </div>
         </div >
