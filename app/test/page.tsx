@@ -1,4 +1,3 @@
-//break this out into another component
 //page should handle the api call to get the data of the right half if needed, its state
 
 import EditorPanel from "../layout_components/editorPanel"
