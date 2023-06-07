@@ -51,7 +51,7 @@ const EditorPanel = () => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col grow ">
       <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 flex mx-3 my-2">
         {
           test.lessonName.tabs.map((value, index) => {
@@ -81,20 +81,22 @@ const EditorPanel = () => {
       <Editor
         defaultValue={test.lessonName.tabs[test.lessonName.defaultTab].defaultValue}
         value={currentInput}
-        height="80vh"
+        height="75%"
         language="sol"
         beforeMount={handleEditorWillMount}
         onMount={handleEditorDidMount}
         options={{ minimap: { enabled: false }, readOnly: isReadOnly }}
       />
+      <div>
+        <button style={{ border: "2px solid red" }} onClick={handleCheckedInput}>Check Answer</button>
+      </div>
       <DiffEditor
         original={currentInput !== "" && checkedInput ? currentInput : ""}
         modified={currentInput !== "" && checkedInput ? correctValue : ""}
-        height="12vh"
+        height="10%"
         language="sol"
         options={{ renderSideBySide: false, minimap: { enabled: false } }}
       />
-      <button onClick={handleCheckedInput}>Click me</button>
     </div>
   )
 }

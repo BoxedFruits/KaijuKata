@@ -8,7 +8,7 @@ const LessonLayout = ({
      return (
         <>
             <Navbar/>
-            <main>{children}</main>
+            <main className='flex min-h-full grow'>{children}</main>
         </>
     )
 }
