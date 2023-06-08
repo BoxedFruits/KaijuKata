@@ -4,12 +4,19 @@
         "tabs": [
             {
                 "tabName": "test1",
+                "language": "sol",
                 "defaultValue": "test1blahblah"
             },
             {
                 "tabName": "test2",
+                "language": "sol",
                 "defaultValue": "test2blahblah",
                 "correctValue": "test2bluhbers"
+            },
+            {
+                "tabName": "test3",
+                "language": "html",
+                "defaultValue": "<html> <p> \n blah blah  <html/>"
             }
         ]
     }
