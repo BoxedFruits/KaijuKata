@@ -21,9 +21,9 @@ const SideMenu = () => {
             <span className="open-nav" onClick={openNav}>&#9776; open</span>
             <div id="mySidenav" className="sidenav">
                 <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
-                <a href="#">OpenSea</a>
-                <a href="#">Discord</a>
-                <a href="#">Twitter</a>
+                <a href="https://opensea.io/collection/kaiju-kingz">OpenSea</a>
+                <a href="https://discord.gg/kaiju-kingz">Discord</a>
+                <a href="https://twitter.com/KaijuKingz">Twitter</a>
                 <a href="#">Lessons</a>
                 <a href="#">Disclaimer</a>
             </div>
