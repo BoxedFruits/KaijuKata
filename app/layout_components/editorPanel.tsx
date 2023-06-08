@@ -20,7 +20,7 @@ const EditorPanel = () => {
   const [checkedInput, setCheckedInput] = useState(false)
   const [currentTabInfo, setCurrentTabInfo] = useState<CurrentTabInfo>({
     language: test.lessonName.tabs[test.lessonName.defaultTab].language,
-    index:test.lessonName.defaultTab,
+    index: test.lessonName.defaultTab,
     correctValue: test.lessonName.tabs[test.lessonName.defaultTab]?.correctValue !== undefined ? test.lessonName.tabs[test.lessonName.defaultTab]?.correctValue : "",
     isReadonly: test.lessonName.tabs[test.lessonName.defaultTab]?.correctValue !== undefined ? false : true
   });
@@ -66,20 +66,22 @@ const EditorPanel = () => {
   return (
     <div className="flex flex-col grow ">
       <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 flex mx-3 my-2">
-        {
-          test.lessonName.tabs.map((tabInfo: TabInfo, index) => {
-            return (
-              <Tab 
-                key={`${index}`}
-                index={index}
-                currentTabInfo={currentTabInfo}
-                tabInfo={tabInfo}
-                toBeSelectedId={toBeSelectedId}
-                defaultSelectedTab={test.lessonName.defaultTab}
-                handleTabChange={handleTabChange}
-              />
-            )
-          })}
+        <ul className="flex">
+          {
+            test.lessonName.tabs.map((tabInfo: TabInfo, index) => {
+              return (
+                <Tab
+                  key={`${index}`}
+                  index={index}
+                  currentTabInfo={currentTabInfo}
+                  tabInfo={tabInfo}
+                  toBeSelectedId={toBeSelectedId}
+                  defaultSelectedTab={test.lessonName.defaultTab}
+                  handleTabChange={handleTabChange}
+                />
+              )
+            })}
+        </ul>
       </div>
       <Editor
         defaultValue={test.lessonName.tabs[test.lessonName.defaultTab].defaultValue}
@@ -91,7 +93,11 @@ const EditorPanel = () => {
         options={{ minimap: { enabled: false }, readOnly: currentTabInfo.isReadonly }}
       />
       <div>
-        <button style={{ border: "2px solid red" }} onClick={handleCheckedInput}>Check Answer</button>
+        <button
+          style={{ border: "2px solid red" }}
+          onClick={handleCheckedInput}
+          disabled={currentTabInfo.isReadonly}
+        >Check Answer</button>
       </div>
       <DiffEditor
         original={currentInput !== "" && checkedInput ? currentInput : ""}

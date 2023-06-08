@@ -49,32 +49,29 @@ const getIcon = (language: string) => {
 
 const Tab = (props: TabProps) => {
   return (
-    <div>
-      <ul className="flex" key={`editor-tab-${props.index}`}>
-        <li className={`flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600  
+    <label className="flex align-middle cursor-pointer" key={`editor-tab-${props.index}`}
+      htmlFor={`editor-tab-${props.index}`}>
+      <li className={`flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600  
         hover:border-gray-300 dark:hover:text-gray-300  
         ${props.currentTabInfo.index === props.index ? selectedTabStyle : ''}`}>
         {getIcon(props.tabInfo.language)}
-        <label
-          htmlFor={`editor-tab-${props.index}`}>{props.tabInfo.tabName}.{props.tabInfo.language}
-          <input
-            type="radio"
-            name="tabs"
-            id={`editor-tab-${props.index}`}
-            key={`editor-tab-${props.index}`}
-            value={props.currentTabInfo.index === props.index ? "on" : "off"}
-            data-id={props.defaultSelectedTab === props.index ? props.toBeSelectedId : undefined}
-            onClick={() => props.handleTabChange(
-              props.tabInfo.defaultValue,
-              props.tabInfo?.correctValue,
-              props.index,
-              props.tabInfo.language
-            )}
-          />
-        </label>
+        {props.tabInfo.tabName}.{props.tabInfo.language}
+        <input
+          type="radio"
+          name="tabs"
+          id={`editor-tab-${props.index}`}
+          key={`editor-tab-${props.index}`}
+          value={props.currentTabInfo.index === props.index ? "on" : "off"}
+          data-id={props.defaultSelectedTab === props.index ? props.toBeSelectedId : undefined}
+          onClick={() => props.handleTabChange(
+            props.tabInfo.defaultValue,
+            props.tabInfo?.correctValue,
+            props.index,
+            props.tabInfo.language
+          )}
+        />
       </li>
-    </ul>
-    </div >
+    </label>
   )
 }
 
