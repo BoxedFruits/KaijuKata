@@ -13,9 +13,12 @@ export interface CurrentTabInfo {
   isReadonly: boolean
 }
 
+interface EditorPanelProps {
+  width?: string
+}
 
 //TODO: this should be use an api call to get the data that is passed into it from page.tsx
-const EditorPanel = () => {
+const EditorPanel = (props: EditorPanelProps) => {
   const [currentInput, setCurrentInput] = useState("")
   const [checkedInput, setCheckedInput] = useState(false)
   const [currentTabInfo, setCurrentTabInfo] = useState<CurrentTabInfo>({
@@ -87,6 +90,7 @@ const EditorPanel = () => {
         defaultValue={test.lessonName.tabs[test.lessonName.defaultTab].defaultValue}
         value={currentInput}
         height="75%"
+        width={props.width}
         language={currentTabInfo?.language}
         beforeMount={handleEditorWillMount}
         onMount={handleEditorDidMount}
@@ -102,6 +106,7 @@ const EditorPanel = () => {
       <DiffEditor
         original={currentInput !== "" && checkedInput ? currentInput : ""}
         modified={currentInput !== "" && checkedInput ? currentTabInfo.correctValue : ""}
+        width={props.width}
         height="10%"
         language={currentTabInfo?.language}
         options={{ renderSideBySide: false, minimap: { enabled: false } }}

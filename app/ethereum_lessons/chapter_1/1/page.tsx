@@ -6,7 +6,7 @@ export default function Page() {
   //TODO: make api call and pass into editor panel
   return (
     <TwoPanelLayout>
-      <div className="panelOfLeft">
+      <div>
         <div className="lesson">
           <p>something</p>
         </div>
