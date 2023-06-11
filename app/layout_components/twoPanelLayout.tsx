@@ -9,8 +9,8 @@ const TwoPanelLayout = ({
 }) => {
   const childrenArray = React.Children.toArray(children);
   const [panelWidths, setPanelWidths] = React.useState({
-    leftPanelWidth: window.screen.availWidth * (6 / 16),
-    rightPanelWidth: window.screen.availWidth * (10 / 16)
+    leftPanelWidth: window.innerWidth * (6 / 16) - 4,
+    rightPanelWidth: window.innerWidth * (10 / 16) - 4
   })
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -24,8 +24,8 @@ const TwoPanelLayout = ({
 
   const handleMouseMove = (e: MouseEvent) => {
     setPanelWidths({
-      leftPanelWidth: e.clientX,
-      rightPanelWidth: window.screen.availWidth - e.clientX
+      leftPanelWidth: e.clientX - 4,
+      rightPanelWidth: window.innerWidth - e.clientX - 8
     })
   }
 
@@ -35,7 +35,8 @@ const TwoPanelLayout = ({
         {childrenArray[0]}
       </div>
       <div className="dividerthinng group flex h-full items-center justify-center transition hover:bg-sky-500
-            active:bg-sky-500 dark:hover:bg-dark-blue-s w-2 hover:cursor-col-resize"
+            active:bg-sky-500 dark:hover:bg-dark-blue-s hover:cursor-col-resize"
+            style={{ width: "8px" }}
         onMouseDown={(e) => handleMouseDown(e)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 14" width="2" height="14" fill="currentColor"

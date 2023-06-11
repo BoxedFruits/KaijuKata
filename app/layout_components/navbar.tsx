@@ -4,7 +4,7 @@ import SideMenu from './sidemenu/sidemenu';
 const Navbar = () => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
-      <div className="max-w-screen flex justify-between p-1">
+      <div className="max-w-full flex justify-between p-1">
         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <a href="#" className="flex items-center">
             <Image className="mr-3" src="/kaijuKingzLogo.webp" alt="KaijuKata Logo" width={35} height={35} />
