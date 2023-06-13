@@ -1,4 +1,4 @@
-import Navbar from '../layout_components/navbar'
+import Navbar from '../common_components/navbar'
 
 const LessonLayout = ({
     children,

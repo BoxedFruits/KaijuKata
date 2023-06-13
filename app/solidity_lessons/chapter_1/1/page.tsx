@@ -1,6 +1,6 @@
-import LayoutButtons from "@/app/layout_components/layoutButtons"
-import EditorPanel from "../../../layout_components/editorPanel"
-import TwoPanelLayout from "../../../layout_components/twoPanelLayout"
+import LayoutButtons from "@/app/common_components/layoutButtons"
+import EditorPanel from "../../../common_components/editorPanel"
+import TwoPanelLayout from "../../../common_components/twoPanelLayout"
 
 export default function Page() {
   //TODO: make api call and pass into editor panel
