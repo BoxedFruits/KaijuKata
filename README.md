@@ -1,3 +1,11 @@
+# Kaiju Kata
+Shout out to Dots for bringing the idea of this project up. This project is not officially affiliated with KaijuKingz 
+
+Cryptozombies has for the longest time been the go to resource for aspiring Web3 devs looking to start building things in the crypto landscape. It was and still is a great resource to do that but a lot of the lessons were made using an older version of Solidity which now has outdated syntax and possibly outdated best practices.
+
+Kaiju Kata seeks to solve this and more while being open source so that community members can submit, add fixes and improve lessons.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
