@@ -8,6 +8,8 @@ const TwoPanelLayout = ({
   children: React.ReactNode
 }) => {
   const childrenArray = React.Children.toArray(children);
+  const minWidths = window.innerWidth * (5 / 16) - 4
+
   const [panelWidths, setPanelWidths] = React.useState({
     leftPanelWidth: window.innerWidth * (6 / 16) - 4,
     rightPanelWidth: window.innerWidth * (10 / 16) - 4
@@ -23,20 +25,22 @@ const TwoPanelLayout = ({
   }
 
   const handleMouseMove = (e: MouseEvent) => {
-    setPanelWidths({
-      leftPanelWidth: e.clientX - 4,
-      rightPanelWidth: window.innerWidth - e.clientX - 8
-    })
+    if (e.clientX - 4 >= minWidths && window.innerWidth - e.clientX - 4 >= minWidths) {
+      setPanelWidths({
+        leftPanelWidth: e.clientX - 4,
+        rightPanelWidth: window.innerWidth - e.clientX - 4
+      })
+    }
   }
 
   return (
     <div className="flex flex-row min-h-full grow">
-      <div className="left-panel relative flex grow" style={{ minWidth: panelWidths.leftPanelWidth }}>
+      <div className="left-panel relative flex grow" style={{ width: panelWidths.leftPanelWidth }}>
         {childrenArray[0]}
       </div>
       <div className="dividerthinng group flex h-full items-center justify-center transition hover:bg-sky-500
             active:bg-sky-500 dark:hover:bg-dark-blue-s hover:cursor-col-resize"
-            style={{ width: "8px" }}
+        style={{ width: "8px" }}
         onMouseDown={(e) => handleMouseDown(e)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 14" width="2" height="14" fill="currentColor"
@@ -46,7 +50,7 @@ const TwoPanelLayout = ({
           <circle r="1" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 1 13)"></circle>
         </svg>
       </div>
-      <div className="right-panel flex grow" style={{ width: panelWidths.rightPanelWidth }}>
+      <div className="right-panel flex grow overflow-x-hidden" style={{ width: panelWidths.rightPanelWidth }}>
         {React.cloneElement(childrenArray[1] as ReactElement, { width: panelWidths.rightPanelWidth + "px" })}
       </div>
     </div >
