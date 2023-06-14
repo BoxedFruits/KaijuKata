@@ -36,3 +36,29 @@ input[type="radio"], input[type="checkbox"]{
   /* Not removed via appearance */
   margin: 0;
 }
+
+h1 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+p,
+li {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+code
+{
+  margin-bottom: 1rem;
+}
