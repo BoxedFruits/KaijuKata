@@ -1,10 +1,8 @@
 "use client"
-import * as test from "../../data/test.json" //TODO: this should come from an api
-
 import Editor, { Monaco, DiffEditor } from "@monaco-editor/react"
 import { type editor } from 'monaco-editor';
 import { useEffect, useId, useRef, useState } from "react"
-import Tab, { TabInfo } from "./tab";
+import Tab, { LessonInfo, TabInfo } from "./tab";
 
 export interface CurrentTabInfo {
   language: string,
@@ -14,18 +12,19 @@ export interface CurrentTabInfo {
 }
 
 interface EditorPanelProps {
-  width?: string
+  width?: string,
+  lessonInfo: LessonInfo
 }
 
 //TODO: this should be use an api call to get the data that is passed into it from page.tsx
-const EditorPanel = (props: EditorPanelProps) => {
+const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
   const [currentInput, setCurrentInput] = useState("")
   const [checkedInput, setCheckedInput] = useState(false)
   const [currentTabInfo, setCurrentTabInfo] = useState<CurrentTabInfo>({
-    language: test.lessonName.tabs[test.lessonName.defaultTab].language,
-    index: test.lessonName.defaultTab,
-    correctValue: test.lessonName.tabs[test.lessonName.defaultTab]?.correctValue !== undefined ? test.lessonName.tabs[test.lessonName.defaultTab]?.correctValue : "",
-    isReadonly: test.lessonName.tabs[test.lessonName.defaultTab]?.correctValue !== undefined ? false : true
+    language: lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab].language,
+    index: lessonInfo.lessonName.defaultTab,
+    correctValue: lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab]?.correctValue !== undefined ? lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab]?.correctValue : "",
+    isReadonly: lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab]?.correctValue !== undefined ? false : true
   });
 
   const toBeSelectedId = useId(); //NOTE: this is only being used as there is a big with nextjs and the checked attribute. https://github.com/vercel/next.js/issues/49499
@@ -71,7 +70,7 @@ const EditorPanel = (props: EditorPanelProps) => {
       <div className="text-sm font-medium text-center text-gray-500 border-gray-200 dark:text-gray-400 dark:border-gray-700 flex mx-3 my-2">
         <ul className="flex">
           {
-            test.lessonName.tabs.map((tabInfo: TabInfo, index) => {
+            lessonInfo.lessonName.tabs.map((tabInfo: TabInfo, index) => {
               return (
                 <Tab
                   key={`${index}`}
@@ -79,7 +78,7 @@ const EditorPanel = (props: EditorPanelProps) => {
                   currentTabInfo={currentTabInfo}
                   tabInfo={tabInfo}
                   toBeSelectedId={toBeSelectedId}
-                  defaultSelectedTab={test.lessonName.defaultTab}
+                  defaultSelectedTab={lessonInfo.lessonName.defaultTab}
                   handleTabChange={handleTabChange}
                 />
               )
@@ -87,10 +86,10 @@ const EditorPanel = (props: EditorPanelProps) => {
         </ul>
       </div>
       <Editor
-        defaultValue={test.lessonName.tabs[test.lessonName.defaultTab].defaultValue}
+        defaultValue={lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab].defaultValue}
         value={currentInput}
         height="75%"
-        width={props.width}
+        width={width}
         language={currentTabInfo?.language}
         beforeMount={handleEditorWillMount}
         onMount={handleEditorDidMount}
@@ -101,12 +100,12 @@ const EditorPanel = (props: EditorPanelProps) => {
           style={{ border: "2px solid red" }}
           onClick={handleCheckedInput}
           disabled={currentTabInfo.isReadonly}
-        >Check Answer</button>
+        >{currentTabInfo.isReadonly ? "Read only" : "Check Answer"}</button>
       </div>
       <DiffEditor
         original={currentInput !== "" && checkedInput ? currentInput : ""}
         modified={currentInput !== "" && checkedInput ? currentTabInfo.correctValue : ""}
-        width={props.width}
+        width={width}
         height="10%"
         language={currentTabInfo?.language}
         options={{ renderSideBySide: false, minimap: { enabled: false } }}

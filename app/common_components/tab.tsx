@@ -11,7 +11,7 @@ interface TabProps {
   defaultSelectedTab: number
 }
 
-interface LessonInfo { //Type for the API call
+export interface LessonInfo { //Type for the API call
   lessonName: {
     defaultTab: number,
     tabs: TabInfo[]
