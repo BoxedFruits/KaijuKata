@@ -35,12 +35,14 @@ const TwoPanelLayout = ({
 
   return (
     <div className="flex flex-row min-h-full grow">
-      <div className="left-panel relative flex grow" style={{ width: panelWidths.leftPanelWidth }}>
-        {childrenArray[0]}
+      <div className="left-panel relative flex grow rounded-md pb-6 pt-4 pl-2 pr-1" style={{ width: panelWidths.leftPanelWidth }}>
+        <div className="rounded-md backdrop-blur-2xl dark:bg-zinc-600/30 border-slate-900">
+          {childrenArray[0]}
+        </div>
       </div>
       <div className="dividerthinng group flex h-full items-center justify-center transition hover:bg-sky-500
             active:bg-sky-500 dark:hover:bg-dark-blue-s hover:cursor-col-resize"
-        style={{ width: "8px" }}
+        style={{ width: ".4rem" }}
         onMouseDown={(e) => handleMouseDown(e)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 14" width="2" height="14" fill="currentColor"
@@ -50,8 +52,10 @@ const TwoPanelLayout = ({
           <circle r="1" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 1 13)"></circle>
         </svg>
       </div>
-      <div className="right-panel flex grow overflow-x-hidden" style={{ width: panelWidths.rightPanelWidth }}>
+      <div className="right-panel relative flex grow pb-6 pt-4 pr-2 pl-1" style={{ width: panelWidths.rightPanelWidth }}>
+        <div className="flex overflow-x-hidden rounded-md backdrop-blur-2xl dark:bg-zinc-600/30 border-slate-900">
         {React.cloneElement(childrenArray[1] as ReactElement, { width: panelWidths.rightPanelWidth + "px" })}
+        </div>
       </div>
     </div >
   )
