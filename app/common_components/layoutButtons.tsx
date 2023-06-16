@@ -9,13 +9,11 @@ export interface LayoutButtonsProps {
 
 const LayoutButtons = (props : LayoutButtonsProps) => {
     return (
-        <div>
-            {/* there should be a better way of doing this without using position absolute.  */}
-            <div className="layout-buttons absolute bottom-10 w-full">
+
+            <div className="layout-buttons flex m-2 bottom-4 justify-between w-full ">
                 <Link className="float-left ml-8" href={props.prevRoute}>Back</Link>
                 <Link className="float-right mr-8" href={props.nextRoute}>Next</Link>
             </div>
-        </div>
     )
 }
 

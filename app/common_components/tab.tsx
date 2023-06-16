@@ -51,7 +51,7 @@ const Tab = (props: TabProps) => {
   return (
     <label className="flex align-middle cursor-pointer select-none" key={`editor-tab-${props.index}`}
       htmlFor={`editor-tab-${props.index}`}>
-      <li className={`flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600  
+      <li className={`flex p-3 border-b-2 border-transparent rounded-t-lg hover:text-gray-600  
         hover:border-gray-300 dark:hover:text-gray-300  
         ${props.currentTabInfo.index === props.index ? selectedTabStyle : ''}`}>
         {getIcon(props.tabInfo.language)}
