@@ -85,15 +85,26 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
             })}
         </ul>
       </div>
-      <Editor
+      {/* <Editor
         defaultValue={lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab].defaultValue}
         value={currentInput}
         height="75%"
         width={width}
         language={currentTabInfo?.language}
+        beforeMount={handleEditorWillMount
+        onMount={handleEditorDidMount}}
+        options={{ minimap: { enabled: false }, readOnly: currentTabInfo.isReadonly }}
+      /> */}
+
+      <DiffEditor
+        original={currentInput !== "" && checkedInput ? currentInput : ""}
+        modified={currentInput !== "" && checkedInput ? currentTabInfo.correctValue : ""}
         beforeMount={handleEditorWillMount}
         onMount={handleEditorDidMount}
-        options={{ minimap: { enabled: false }, readOnly: currentTabInfo.isReadonly }}
+        width={width}
+        height="10%"
+        language={currentTabInfo?.language}
+        options={{ renderSideBySide: false, minimap: { enabled: false } }}
       />
       <div>
         <button
@@ -102,14 +113,14 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
           disabled={currentTabInfo.isReadonly}
         >{currentTabInfo.isReadonly ? "Read only" : "Check Answer"}</button>
       </div>
-      <DiffEditor
+      {/* <DiffEditor
         original={currentInput !== "" && checkedInput ? currentInput : ""}
         modified={currentInput !== "" && checkedInput ? currentTabInfo.correctValue : ""}
         width={width}
         height="10%"
         language={currentTabInfo?.language}
         options={{ renderSideBySide: false, minimap: { enabled: false } }}
-      />
+      /> */}
     </div>
   )
 }
