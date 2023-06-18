@@ -45,18 +45,16 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
   function handleEditorDidMount(editor: editor.IStandaloneCodeEditor, monaco: Monaco) {
     // @ts-ignore
     let modifiedEditor = editor.getModifiedEditor()
-    modifiedEditor.onDidChangeModelContent((_) => {
-      console.log("changed " + modifiedEditor.getValue());
+    modifiedEditor.onDidChangeModelContent(() => {
       setCurrentInput(modifiedEditor.getValue())
     });
     editorRef.current = modifiedEditor;
-    // editorRef.current = editor;
     monacoRef.current = monaco;
   }
 
   const handleCheckInput = () => {
     if (currentTabInfo.isReadonly !== true) {
-      setCheckInput(true)
+      setCheckInput(!checkInput)
       console.log("check input ", currentTabInfo.correctValue, currentInput)
     }
   }
@@ -96,8 +94,6 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
       <DiffEditor
         original={checkInput === true ? currentTabInfo.correctValue : currentInput}
         modified={currentInput}
-        // original={currentInput}
-        // modified={checkInput === false ? currentTabInfo.correctValue : currentInput}
         beforeMount={handleEditorWillMount}
         onMount={handleEditorDidMount}
         width={width}
