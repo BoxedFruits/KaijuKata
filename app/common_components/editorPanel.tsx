@@ -18,8 +18,8 @@ interface EditorPanelProps {
 
 //TODO: this should be use an api call to get the data that is passed into it from page.tsx
 const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
-  const [currentInput, setCurrentInput] = useState("")
-  const [checkedInput, setCheckedInput] = useState(false)
+  const [currentInput, setCurrentInput] = useState(lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab].defaultValue)
+  const [checkInput, setCheckInput] = useState(false)
   const [currentTabInfo, setCurrentTabInfo] = useState<CurrentTabInfo>({
     language: lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab].language,
     index: lessonInfo.lessonName.defaultTab,
@@ -43,20 +43,28 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
   }
 
   function handleEditorDidMount(editor: editor.IStandaloneCodeEditor, monaco: Monaco) {
-    editorRef.current = editor;
+    // @ts-ignore
+    let modifiedEditor = editor.getModifiedEditor()
+    modifiedEditor.onDidChangeModelContent((_) => {
+      console.log("changed " + modifiedEditor.getValue());
+      setCurrentInput(modifiedEditor.getValue())
+    });
+    editorRef.current = modifiedEditor;
+    // editorRef.current = editor;
     monacoRef.current = monaco;
   }
 
-  const handleCheckedInput = () => {
+  const handleCheckInput = () => {
     if (currentTabInfo.isReadonly !== true) {
-      setCheckedInput(true)
-      setCurrentInput(editorRef!.current!.getValue())
+      setCheckInput(true)
+      console.log("check input ", currentTabInfo.correctValue, currentInput)
     }
   }
 
   const handleTabChange = (newText: string, correctValue: string | undefined, index: number, language: string) => {
-    setCheckedInput(false)
-    setCurrentInput(newText)
+    setCheckInput(false)
+    setCurrentInput(newText) //this should be in currentTabInfo
+
     setCurrentTabInfo({
       language: language,
       correctValue: correctValue !== undefined ? correctValue : "",
@@ -68,7 +76,7 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
   return (
     <div className="flex flex-col grow px-2 pt-1 pb-2">
       <div className="text-sm font-medium text-center text-gray-500 border-gray-200 dark:text-gray-400 dark:border-gray-700 flex mx-2 my-1">
-        <ul className="flex mb-0" style={{borderBottom: "1px solid #f5f5dc69"}}>
+        <ul className="flex mb-0" style={{ borderBottom: "1px solid #f5f5dc69" }}>
           {
             lessonInfo.lessonName.tabs.map((tabInfo: TabInfo, index) => {
               return (
@@ -85,42 +93,25 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
             })}
         </ul>
       </div>
-      {/* <Editor
-        defaultValue={lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab].defaultValue}
-        value={currentInput}
-        height="75%"
-        width={width}
-        language={currentTabInfo?.language}
-        beforeMount={handleEditorWillMount
-        onMount={handleEditorDidMount}}
-        options={{ minimap: { enabled: false }, readOnly: currentTabInfo.isReadonly }}
-      /> */}
-
       <DiffEditor
-        original={currentInput !== "" && checkedInput ? currentInput : ""}
-        modified={currentInput !== "" && checkedInput ? currentTabInfo.correctValue : ""}
+        original={checkInput === true ? currentTabInfo.correctValue : currentInput}
+        modified={currentInput}
+        // original={currentInput}
+        // modified={checkInput === false ? currentTabInfo.correctValue : currentInput}
         beforeMount={handleEditorWillMount}
         onMount={handleEditorDidMount}
         width={width}
         height="10%"
         language={currentTabInfo?.language}
-        options={{ renderSideBySide: false, minimap: { enabled: false } }}
+        options={{ renderSideBySide: false, minimap: { enabled: false }, readOnly: currentTabInfo.isReadonly }}
       />
       <div>
         <button
           style={{ border: "2px solid red" }}
-          onClick={handleCheckedInput}
+          onClick={handleCheckInput}
           disabled={currentTabInfo.isReadonly}
         >{currentTabInfo.isReadonly ? "Read only" : "Check Answer"}</button>
       </div>
-      {/* <DiffEditor
-        original={currentInput !== "" && checkedInput ? currentInput : ""}
-        modified={currentInput !== "" && checkedInput ? currentTabInfo.correctValue : ""}
-        width={width}
-        height="10%"
-        language={currentTabInfo?.language}
-        options={{ renderSideBySide: false, minimap: { enabled: false } }}
-      /> */}
     </div>
   )
 }
