@@ -47,27 +47,27 @@ const getIcon = (language: string) => {
 }
 
 
-const Tab = (props: TabProps) => {
+const Tab = ({index, currentTabInfo, tabInfo, defaultSelectedTab, toBeSelectedId, handleTabChange}: TabProps) => {
   return (
-    <label className="flex align-middle cursor-pointer select-none" key={`editor-tab-${props.index}`}
-      htmlFor={`editor-tab-${props.index}`}>
+    <label className="flex align-middle cursor-pointer select-none" key={`editor-tab-${index}`}
+      htmlFor={`editor-tab-${index}`}>
       <li className={`flex p-3 border-b-2 border-transparent rounded-t-lg hover:text-gray-600  
         hover:border-gray-300 dark:hover:text-gray-300  
-        ${props.currentTabInfo.index === props.index ? selectedTabStyle : ''}`}>
-        {getIcon(props.tabInfo.language)}
-        {props.tabInfo.tabName}.{props.tabInfo.language}
+        ${currentTabInfo.index === index ? selectedTabStyle : ''}`}>
+        {getIcon(tabInfo.language)}
+        {tabInfo.tabName}.{tabInfo.language}
         <input
           type="radio"
           name="tabs"
-          id={`editor-tab-${props.index}`}
-          key={`editor-tab-${props.index}`}
-          value={props.currentTabInfo.index === props.index ? "on" : "off"}
-          data-id={props.defaultSelectedTab === props.index ? props.toBeSelectedId : undefined}
-          onClick={() => props.handleTabChange(
-            props.tabInfo.defaultValue,
-            props.tabInfo?.correctValue,
-            props.index,
-            props.tabInfo.language
+          id={`editor-tab-${index}`}
+          key={`editor-tab-${index}`}
+          value={currentTabInfo.index === index ? "on" : "off"}
+          data-id={defaultSelectedTab === index ? toBeSelectedId : undefined}
+          onClick={() => handleTabChange(
+            tabInfo.defaultValue,
+            tabInfo?.correctValue,
+            index,
+            tabInfo.language
           )}
         />
       </li>
