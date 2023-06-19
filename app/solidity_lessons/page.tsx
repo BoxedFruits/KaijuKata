@@ -1,5 +1,9 @@
+import CourseViewer from "../common_components/course_viewer/courseViewer";
+
 const Page = () => {
-  return(<div>Page</div>)
+  return (
+    <CourseViewer />
+  )
 }
 
 export default Page;
