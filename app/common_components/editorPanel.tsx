@@ -55,7 +55,6 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
   const handleCheckInput = () => {
     if (currentTabInfo.isReadonly !== true) {
       setCheckInput(!checkInput)
-      console.log("check input ", currentTabInfo.correctValue, currentInput)
     }
   }
 
@@ -97,7 +96,7 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
         beforeMount={handleEditorWillMount}
         onMount={handleEditorDidMount}
         width={width}
-        height="10%"
+        height="90%"
         language={currentTabInfo?.language}
         options={{ renderSideBySide: false, minimap: { enabled: false }, readOnly: currentTabInfo.isReadonly }}
       />
