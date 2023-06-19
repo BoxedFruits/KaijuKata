@@ -70,6 +70,14 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
     })
   }
 
+  const buttonText = () => {
+    if (currentTabInfo.isReadonly) {
+      return "Read only"
+    } else {
+      return !checkInput ? "Check Answer" : "Hide Answer"
+    }
+  }
+
   return (
     <div className="flex flex-col grow px-2 pt-1 pb-2">
       <div className="text-sm font-medium text-center text-gray-500 border-gray-200 dark:text-gray-400 dark:border-gray-700 flex mx-2 my-1">
@@ -105,7 +113,7 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
           style={{ border: "2px solid red" }}
           onClick={handleCheckInput}
           disabled={currentTabInfo.isReadonly}
-        >{currentTabInfo.isReadonly ? "Read only" : "Check Answer"}</button>
+        >{buttonText()}</button>
       </div>
     </div>
   )
