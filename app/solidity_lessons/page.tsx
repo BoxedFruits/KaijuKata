@@ -2,8 +2,9 @@ import CourseViewer, { ICourseViewer } from "../common_components/course_viewer/
 
 const data: ICourseViewer = {
   courseName: "Solidity Basics",
-  courseDescription: "Learn the basics of Solidity blah blah blah Enim similique quaerat id nam voluptatemEnim similique quaerat id nam voluptatemEnim similique quaerat id nam voluptatemEnim similique quaerat id nam voluptatem",
+  courseDescription: "Learn the basics of Solidity blah blah blah Enim similique quaerat id nam voluptatemEnim similique quaerat id nam voluptatemEnim similique quaerat id nam voluptatemEnim similique quaerat id nam voluptatemvoluptatemEnim similique quaerat id nam voluvoluptatemEnim similique quaerat id nam voluvoluptatemEnim similique quaerat id nam volu",
   courseThumbnail: "https://i.imgur.com/Jvh1OQm.jpeg",
+  prerequisites: ["Basic Programming", "Basic Javascript"],
   lessons: [
     { 
       lessonName: "Basic Datatypes",
@@ -28,6 +29,7 @@ const Page = () => {
       courseName={data.courseName} 
       courseDescription={data.courseDescription} 
       courseThumbnail={data.courseThumbnail}
+      prerequisites={data.prerequisites}
       lessons={data.lessons} 
     />
   )
