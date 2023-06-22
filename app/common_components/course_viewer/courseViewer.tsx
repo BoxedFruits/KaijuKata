@@ -12,8 +12,8 @@ export interface ICourseViewer {
 const CourseViewer = ({ courseName, courseDescription, courseThumbnail, prerequisites, lessons }: ICourseViewer) => {
   return (
     <>
-      <div className="flex grow flex-col md:flex-row bg-gradient-to-r from-zinc-600 to-zinc-800">
-        <div className="left-side md:w-5/12 md:bg-zinc-800 p-5">
+      <div className="flex grow flex-col h-full md:h-auto md:flex-row bg-gradient-to-r from-zinc-600 to-zinc-800">
+        <div className="left-side md:w-5/12 md:bg-zinc-800 p-5 md:overflow-auto">
           <h1 className="mb-0 md:mb-7 text-6xl font-bold">{courseName}</h1>
           <div className="hidden md:block">
             <LessonList lessons={lessons} />
