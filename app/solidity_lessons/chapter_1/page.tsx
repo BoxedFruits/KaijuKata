@@ -3,7 +3,7 @@ import CourseViewer, { ICourseViewer } from "../../common_components/course_view
 const data: ICourseViewer = {
   courseName: "Solidity Basics",
   courseDescription: "Learn the basics of Solidity blah blah blah Enim similique quaerat id nam voluptatemEnim similique quaerat id nam voluptatemEnim similique quaerat id nam voluptatemEnim similique quaerat id nam voluptatemvoluptatemEnim similique quaerat id nam voluvoluptatemEnim similique quaerat id nam voluvoluptatemEnim similique quaerat id nam volu",
-  courseThumbnail: "https://i.imgur.com/Jvh1OQm.jpeg",
+  courseThumbnail: "/superShadowyCoder.jpg",
   prerequisites: ["Basic Programming", "Basic Javascript"],
   lessons: [
     { 
@@ -22,7 +22,22 @@ const data: ICourseViewer = {
       lessonPath: "/solidity_lessons/chapter_1/3",
       thumbnailPath: "https://i.imgur.com/3ZQc5nJ.png"
    }
-
+   ,{
+    lessonName: "Functions",
+    lessonDescription: "Learn about functions in Solidity Sint eveniet id rerum. Enim similique quaerat id nam voluptatem.",
+    lessonPath: "/solidity_lessons/chapter_1/3",
+    thumbnailPath: "https://i.imgur.com/3ZQc5nJ.png"
+ },{
+  lessonName: "Functions",
+  lessonDescription: "Learn about functions in Solidity Sint eveniet id rerum. Enim similique quaerat id nam voluptatem.",
+  lessonPath: "/solidity_lessons/chapter_1/3",
+  thumbnailPath: "https://i.imgur.com/3ZQc5nJ.png"
+},{
+  lessonName: "Functions",
+  lessonDescription: "Learn about functions in Solidity Sint eveniet id rerum. Enim similique quaerat id nam voluptatem.",
+  lessonPath: "/solidity_lessons/chapter_1/3",
+  thumbnailPath: "https://i.imgur.com/3ZQc5nJ.png"
+}
   ]
 }
 
