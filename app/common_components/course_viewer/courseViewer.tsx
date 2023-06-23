@@ -1,4 +1,4 @@
-import Image from "next/image";
+import img from "next/image";
 import LessonList, { ILessonItem } from "./lessonList";
 
 export interface ICourseViewer {
@@ -19,10 +19,12 @@ const CourseViewer = ({ courseName, courseDescription, courseThumbnail, prerequi
             <LessonList lessons={lessons} />
           </div>
         </div>
-        <div className="right-side md:w-7/12 md:bg-zinc-700 p-5">
+        <div className="right-side md:w-7/12 md:bg-zinc-700 p-7">
           <div className="course-info">
             <div className="mb-5 flex align-middle items-center justify-center">
-              <Image src={courseThumbnail} alt="course thumbnail" width={200} height={200} />
+              <div className="thumbnail w-50">
+                <img src={courseThumbnail} alt="course thumbnail" style={{objectFit: "cover", width:"100%", height: "100%"}} />
+              </div>
             </div>
             <div className="px-5">
               <h2 className="text-4xl font-semibold">Course Objective</h2>
