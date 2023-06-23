@@ -19,7 +19,7 @@ const CourseViewer = ({ courseName, courseDescription, courseThumbnail, prerequi
             <LessonList lessons={lessons} />
           </div>
         </div>
-        <div className="right-side md:w-7/12 md:bg-zinc-700 p-7">
+        <div className="right-side md:w-7/12 md:bg-zinc-700 p-7 md:overflow-auto">
           <div className="course-info">
             <div className="mb-5 flex align-middle items-center justify-center">
               <div className="thumbnail w-50">
