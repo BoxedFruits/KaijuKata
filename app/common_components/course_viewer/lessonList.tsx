@@ -1,7 +1,7 @@
 'use client'
 
-import Link from 'next/link'
 import { useState } from 'react'
+import DialogBox from '../dialogBox'
 
 export interface ILessonItem {
 	lessonName: string
@@ -60,31 +60,16 @@ const LessonList = ({ lessons }: LessonListProps) => {
 			</ol>
 
 			{modalIsOpen && (
-				<div className='fixed inset-0 bg-black bg-opacity-70 z-10'></div>
-			)}
-			{currentLesson && (
-				<dialog
-					open={modalIsOpen}
-					className='z-20 rounded-lg max-w-[50%]'
-				>
-					<button
-						onClick={closeModal}
-						className='text-gray-400 absolute right-2 top-2'
-					>
-						X
-					</button>
-					<h2 className='font-semibold'>
-						{currentLesson.lessonName}
-					</h2>
-					<p className='pb-6'>{currentLesson.lessonDescription}</p>
-
-					<Link
-						href={currentLesson.lessonPath}
-						className='rounded-3xl bg-red-400 py-2 px-1 text-sm absolute right-2 bottom-2'
-					>
-						Start Lesson
-					</Link>
-				</dialog>
+				<div className='fixed inset-0 bg-black bg-opacity-70 z-10'>
+					{currentLesson && (
+						<DialogBox
+							title={currentLesson.lessonName}
+							description={currentLesson.lessonDescription}
+							link={currentLesson.lessonPath}
+							closeModal={closeModal}
+						/>
+					)}
+				</div>
 			)}
 		</>
 	)
