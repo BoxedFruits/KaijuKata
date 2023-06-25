@@ -27,6 +27,8 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@types/prismjs": "^1.26.0"
+    "@types/prismjs": "^1.26.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2"
   }
 }
