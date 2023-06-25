@@ -43,6 +43,8 @@ const getIcon = (language: string) => {
     return <Image src="/file_type_typescript.svg" alt="typescript"></Image>;
   case "html":
     return <Image src="/file_type_html.svg" alt="html" height={24} width={24}></Image>;
+  default:
+    return <div> something went wrong </div>;
   }
 };
 

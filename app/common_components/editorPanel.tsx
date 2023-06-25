@@ -18,13 +18,13 @@ interface EditorPanelProps {
 
 //TODO: this should be use an api call to get the data that is passed into it from page.tsx
 const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
-  const [currentInput, setCurrentInput] = useState(lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab].defaultValue);
-  const [checkInput, setCheckInput] = useState(false);
-  const [currentTabInfo, setCurrentTabInfo] = useState<CurrentTabInfo>({
+  const [ currentInput, setCurrentInput ] = useState(lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab].defaultValue);
+  const [ checkInput, setCheckInput ] = useState(false);
+  const [ currentTabInfo, setCurrentTabInfo ] = useState<CurrentTabInfo>({
     language: lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab].language,
     index: lessonInfo.lessonName.defaultTab,
     correctValue: lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab]?.correctValue !== undefined ? lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab]?.correctValue : "",
-    isReadonly: lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab]?.correctValue !== undefined ? false : true
+    isReadonly: lessonInfo.lessonName.tabs[lessonInfo.lessonName.defaultTab]?.correctValue === undefined
   });
 
   const toBeSelectedId = useId(); //NOTE: this is only being used as there is a big with nextjs and the checked attribute. https://github.com/vercel/next.js/issues/49499
@@ -66,7 +66,7 @@ const EditorPanel = ({ width, lessonInfo }: EditorPanelProps) => {
       language: language,
       correctValue: correctValue !== undefined ? correctValue : "",
       index: index,
-      isReadonly: correctValue !== undefined ? false : true
+      isReadonly: correctValue === undefined
     });
   };
 

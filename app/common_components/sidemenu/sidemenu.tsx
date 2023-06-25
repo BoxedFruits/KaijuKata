@@ -4,7 +4,7 @@ import "../sidemenu/sidemenu.css";
 
 
 const SideMenu = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [ isChecked, setIsChecked ] = useState(false);
 
   return (
     <div className="hamburger-menu relative z-50">
