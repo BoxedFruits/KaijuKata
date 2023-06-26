@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import LayoutButtons from "@/app/common_components/layoutButtons"
-import EditorPanel from "../../../common_components/editorPanel"
-import TwoPanelLayout from "../../../common_components/twoPanelLayout"
-import CodeSnippet from "@/app/common_components/codeSnippet"
-import { LessonInfo, TabInfo } from "@/app/common_components/tab"
+import LayoutButtons from "@/app/common_components/layoutButtons";
+import EditorPanel from "../../../common_components/editorPanel";
+import TwoPanelLayout from "../../../common_components/twoPanelLayout";
+import CodeSnippet from "@/app/common_components/codeSnippet";
+import { LessonInfo } from "@/app/common_components/tab";
 
 const codeBlock = `
 pragma solidity ^0.7.0;
 contract HelloWorld {
   string public message; 
 }
-`
+`;
 
 const lessonInfo: LessonInfo = {
   "lessonName": {
@@ -114,7 +114,7 @@ const lessonInfo: LessonInfo = {
       {
         "tabName": "test2",
         "language": "sol",
-        "defaultValue": `pragma solidity ^0.8.0;`,
+        "defaultValue": "pragma solidity ^0.8.0;",
         "correctValue": "pragma solidity ^0.8.2;"
       },
       {
@@ -132,7 +132,7 @@ const lessonInfo: LessonInfo = {
       }
     ]
   }
-}
+};
 
 export default function Page() {
   return (
@@ -140,7 +140,7 @@ export default function Page() {
       <div className="mx-6 mt-6 mb-3">
         <div className="lesson-content">
           <h1 className="font-bold">Chapter 1: Lesson Overview</h1>
-          <p>{"In Lesson 1, you\'re going to build a \"Zombie Factory\" to build an army of zombies.\""}</p>
+          <p>{"In Lesson 1, you're going to build a \"Zombie Factory\" to build an army of zombies.\""}</p>
           <ul className="list-disc ps-5">
             <li className="ps-2">Our factory will maintain a database of all zombies in our army</li>
             <li className="ps-2">Our factory will have a function for creating new zombies</li>
@@ -164,5 +164,5 @@ export default function Page() {
       </div>
       <EditorPanel lessonInfo={lessonInfo} />
     </TwoPanelLayout>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import SideMenu from './sidemenu/sidemenu';
+import Image from "next/image";
+import SideMenu from "./sidemenu/sidemenu";
 
 const Navbar = () => {
   return (
@@ -24,7 +24,7 @@ const Navbar = () => {
       </div>
     </nav>
 
-  )
-}
+  );
+};
 
 export default Navbar;

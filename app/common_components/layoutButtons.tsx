@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import './layoutButtons'
+import Link from "next/link";
+import "./layoutButtons";
 
 export interface LayoutButtonsProps {
     className?: string;
@@ -8,13 +8,13 @@ export interface LayoutButtonsProps {
 }
 
 const LayoutButtons = (props : LayoutButtonsProps) => {
-    return (
+  return (
 
-            <div className="layout-buttons flex m-2 bottom-4 justify-between w-full ">
-                <Link className="float-left ml-8" href={props.prevRoute}>Back</Link>
-                <Link className="float-right mr-8" href={props.nextRoute}>Next</Link>
-            </div>
-    )
-}
+    <div className="layout-buttons flex m-2 bottom-4 justify-between w-full ">
+      <Link className="float-left ml-8" href={props.prevRoute}>Back</Link>
+      <Link className="float-right mr-8" href={props.nextRoute}>Next</Link>
+    </div>
+  );
+};
 
 export default LayoutButtons;

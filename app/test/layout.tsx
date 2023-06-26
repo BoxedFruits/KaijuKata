@@ -1,17 +1,17 @@
-import Navbar from '../common_components/navbar'
+import Navbar from "../common_components/navbar";
 
 const LessonLayout = ({
-    children,
+  children,
 }: {
     children: React.ReactNode
 }) => {
-     return (
-        <>
-            <Navbar/>
-            <main>{children}</main>
-        </>
-    )
-}
+  return (
+    <>
+      <Navbar/>
+      <main>{children}</main>
+    </>
+  );
+};
 
 
 export default LessonLayout;

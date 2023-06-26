@@ -1,15 +1,17 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'i.imgur.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "i.imgur.com",
+        port: "",
+        pathname: "/**",
       },
     ],
   },
-}
+};
 
-module.exports = nextConfig
+// eslint-disable-next-line no-undef
+module.exports = nextConfig;

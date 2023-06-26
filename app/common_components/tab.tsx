@@ -25,26 +25,28 @@ export interface TabInfo {
   correctValue?: string
 }
 
-enum Language { // TODO: figure out why this is not working
-  SOL = "sol",
-  JS = "js",
-  TS = "ts",
-  HTML = "html",
-}
+// enum Language { // TODO: figure out why this is not working
+//   SOL = "sol",
+//   JS = "js",
+//   TS = "ts",
+//   HTML = "html",
+// }
 
-const selectedTabStyle = "text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500"
+const selectedTabStyle = "text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500";
 const getIcon = (language: string) => {
   switch (language) {
-    case "sol":
-      return <Image src="/file_type_solidity.svg" alt="solidity" height={24} width={24}></Image>
-    case "js":
-      return <Image src="/file_type_js.svg" alt="javascript"></Image>
-    case "ts":
-      return <Image src="/file_type_typescript.svg" alt="typescript"></Image>
-    case "html":
-      return <Image src="/file_type_html.svg" alt="html" height={24} width={24}></Image>
+  case "sol":
+    return <Image src="/file_type_solidity.svg" alt="solidity" height={24} width={24}></Image>;
+  case "js":
+    return <Image src="/file_type_js.svg" alt="javascript"></Image>;
+  case "ts":
+    return <Image src="/file_type_typescript.svg" alt="typescript"></Image>;
+  case "html":
+    return <Image src="/file_type_html.svg" alt="html" height={24} width={24}></Image>;
+  default:
+    return <div> something went wrong </div>;
   }
-}
+};
 
 
 const Tab = ({index, currentTabInfo, tabInfo, defaultSelectedTab, toBeSelectedId, handleTabChange}: TabProps) => {
@@ -53,7 +55,7 @@ const Tab = ({index, currentTabInfo, tabInfo, defaultSelectedTab, toBeSelectedId
       htmlFor={`editor-tab-${index}`}>
       <li className={`flex p-3 border-b-2 border-transparent rounded-t-lg hover:text-gray-600  
         hover:border-gray-300 dark:hover:text-gray-300  
-        ${currentTabInfo.index === index ? selectedTabStyle : ''}`}>
+        ${currentTabInfo.index === index ? selectedTabStyle : ""}`}>
         {getIcon(tabInfo.language)}
         {tabInfo.tabName}.{tabInfo.language}
         <input
@@ -72,7 +74,7 @@ const Tab = ({index, currentTabInfo, tabInfo, defaultSelectedTab, toBeSelectedId
         />
       </li>
     </label>
-  )
-}
+  );
+};
 
 export default Tab;

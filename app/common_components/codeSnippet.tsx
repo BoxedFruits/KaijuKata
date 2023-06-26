@@ -1,4 +1,4 @@
-import { Prism, Highlight, themes } from "prism-react-renderer"
+import { Prism, Highlight, themes } from "prism-react-renderer";
 
 interface CodeSnippetProps {
   codeBlock: string
@@ -9,14 +9,14 @@ interface CodeSnippetProps {
 (typeof global !== "undefined" ? global : window).Prism = Prism;
 require("prismjs/components/prism-solidity");
 
-const CodeSnippet = ({ codeBlock, language }: CodeSnippetProps) => {
+const CodeSnippet = ({ codeBlock }: CodeSnippetProps) => {
   return (
     <Highlight
       theme={themes.shadesOfPurple}
       code={codeBlock}
       language={"solidity"}
     >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+      {({ style, tokens, getLineProps, getTokenProps }) => (
         <pre style={style}>
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line })}>
@@ -29,7 +29,7 @@ const CodeSnippet = ({ codeBlock, language }: CodeSnippetProps) => {
         </pre>
       )}
     </Highlight>
-  )
-}
+  );
+};
 
 export default CodeSnippet;
