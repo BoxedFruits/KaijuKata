@@ -5,7 +5,7 @@ interface DialogBoxProps {
 	title: string
 	description: string
 	link: string
-	buttonText: string
+	buttonText: null | string
 	closeModal: () => void
 }
 
@@ -13,7 +13,7 @@ const DialogBox = ({
   title,
   description,
   link,
-  buttonText = "Start Lesson",
+  buttonText,
   closeModal,
 }: DialogBoxProps) => {
   return (
@@ -30,12 +30,14 @@ const DialogBox = ({
       <h2 className='font-semibold'>{title}</h2>
       <p className='pb-6'>{description}</p>
 
-      <Link
-        href={link}
-        className='rounded-3xl bg-red-400 py-2 px-3 text-sm absolute right-2 bottom-2'
-      >
-        {buttonText}
-      </Link>
+      {buttonText && (
+        <Link
+          href={link}
+          className='rounded-3xl bg-red-400 py-2 px-3 text-sm absolute right-2 bottom-2'
+        >
+          {buttonText}
+        </Link>
+      )}
     </dialog>
   );
 };
