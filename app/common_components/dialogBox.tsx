@@ -32,7 +32,7 @@ const DialogBox = ({
 
       <Link
         href={link}
-        className='rounded-3xl bg-red-400 py-2 px-1 text-sm absolute right-2 bottom-2'
+        className='rounded-3xl bg-red-400 py-2 px-3 text-sm absolute right-2 bottom-2'
       >
         {buttonText}
       </Link>
