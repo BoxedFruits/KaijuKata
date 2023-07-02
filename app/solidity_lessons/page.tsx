@@ -1,5 +1,6 @@
-const Page = () => {
-  return(<div>Page</div>);
-};
+//component to browse courses
 
+const Page = () => {
+  return <div>test</div>;
+};
 export default Page;
