@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo '🏗️👷 Styling, testing and building your project before committing'
+
+# Check ESLint Standards
+npm run lint ||
+(
+        echo ' ESLint Check Failed. Make the required changes listed above, add changes and try to commit again in a seperate commit.'
+        false; 
+)

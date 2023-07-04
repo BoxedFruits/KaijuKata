@@ -1,10 +1,10 @@
-"use client"
-import { useState } from "react"
-import "../sidemenu/sidemenu.css"
+"use client";
+import { useState } from "react";
+import "../sidemenu/sidemenu.css";
 
 
 const SideMenu = () => {
-  const [isChecked, setIsChecked] = useState(false)
+  const [ isChecked, setIsChecked ] = useState(false);
 
   return (
     <div className="hamburger-menu relative z-50">
@@ -21,7 +21,7 @@ const SideMenu = () => {
         <li><a className="menu__item" href="#">Disclaimer</a></li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default SideMenu;
