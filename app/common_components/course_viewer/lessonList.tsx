@@ -1,8 +1,3 @@
-"use client";
-
-import { useState } from "react";
-import DialogBox from "../dialogBox";
-
 export interface ILessonItem {
 	lessonName: string
 	lessonDescription: string
@@ -12,22 +7,15 @@ export interface ILessonItem {
 
 interface LessonListProps {
 	lessons: ILessonItem[]
+	currentLesson: ILessonItem | null
+	setCurrentLesson: (lesson: ILessonItem | null) => void
 }
 
-const LessonList = ({ lessons }: LessonListProps) => {
-  const [ modalIsOpen, setModalIsOpen ] = useState(false);
-  const [ currentLesson, setCurrentLesson ] = useState<ILessonItem | null>(null);
-
-  const handleLessonClick = (lesson: ILessonItem) => {
-    setCurrentLesson(lesson);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setCurrentLesson(null);
-    setModalIsOpen(false);
-  };
-
+const LessonList = ({
+  lessons,
+  currentLesson,
+  setCurrentLesson,
+}: LessonListProps) => {
   return (
     <>
       <ol className='lesson-list'>
@@ -36,7 +24,7 @@ const LessonList = ({ lessons }: LessonListProps) => {
             <li
               className='mb-6 bg-zinc-700 p-2 rounded-xl'
               key={index}
-              onClick={() => handleLessonClick(lesson)}
+              onClick={() => setCurrentLesson(lesson)}
             >
               <div className='lesson-item flex items-center'>
                 <div className='lesson-thumbnail mr-2'>
@@ -58,22 +46,6 @@ const LessonList = ({ lessons }: LessonListProps) => {
           );
         })}
       </ol>
-
-      {modalIsOpen && (
-        <div
-          className='fixed inset-0 bg-black bg-opacity-70 z-10'
-          onClick={closeModal}
-        >
-          {currentLesson && (
-            <DialogBox
-              title={currentLesson.lessonName}
-              description={currentLesson.lessonDescription}
-              link={currentLesson.lessonPath}
-              closeModal={closeModal}
-            />
-          )}
-        </div>
-      )}
     </>
   );
 };
