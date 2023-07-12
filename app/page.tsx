@@ -47,7 +47,7 @@ export default function Home() {
       </div>
       <div className="h-64 w-full -top-48 relative" style={{ background: "linear-gradient(#00000078 50%,#0000009e 50%,#000000)" }}></div>
       <div className="h-screen w-full">
-        <div className="flex flex-wrap gap-32 justify-center">
+        <div className="flex flex-wrap gap-32 m-16 justify-center">
           <CourseTile imagePath="/shadowy_super_coder.jpg" text="Solidity" link=""></CourseTile>
           <CourseTile imagePath="/snakeguy.jpg" text="Vyper" link=""></CourseTile>
           <CourseTile imagePath="/egyptian_bird.jpg" text="Cairo" link=""></CourseTile>
