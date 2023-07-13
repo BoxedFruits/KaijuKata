@@ -2,6 +2,7 @@ export interface ILessonItem {
 	lessonName: string
 	lessonDescription: string
 	lessonPath: string
+  lessonPrerequisites: string[]
 	thumbnailPath: string
 }
 

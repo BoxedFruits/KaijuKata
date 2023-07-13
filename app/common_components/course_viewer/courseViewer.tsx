@@ -8,7 +8,7 @@ export interface ICourseViewer {
 	courseName: string
 	courseDescription: string
 	courseThumbnail: string
-	prerequisites?: string[]
+	coursePrerequisites?: string[]
 	lessons: ILessonItem[]
 }
 
@@ -16,7 +16,7 @@ const CourseViewer = ({
   courseName,
   courseDescription,
   courseThumbnail,
-  prerequisites,
+  coursePrerequisites,
   lessons,
 }: ICourseViewer) => {
   const [ lessonToggle, setLessonToggle ] = useState<boolean>(true);
@@ -28,15 +28,15 @@ const CourseViewer = ({
     }
   }, [lessons]);
 
-  const displayPreRequisites = (prerequisites?: string[]) => {
-    if (!prerequisites) return null;
+  const displayPreRequisites = (coursePrerequisites?: string[]) => {
+    if (!coursePrerequisites) return null;
     return (
       <>
         <h3 className='mb-1 font-medium text-[15px]'>Prerequisites</h3>
-        {prerequisites.map((prerequisite, index) => {
+        {coursePrerequisites.map((coursePrerequisites: string, index: number) => {
           return (
             <li className='ml-6 font-light text-sm' key={index}>
-              {prerequisite}
+              {coursePrerequisites}
             </li>
           );
         })}
@@ -104,7 +104,7 @@ const CourseViewer = ({
                   className='rounded-lg object-cover min-w-[400px] md:max-w-[50%] min-h-[400px]'
                 />
 
-                <div className='hidden md:flex flex-col pl-6'>
+                <div className='hidden md:flex flex-col pl-6 whitespace-pre-wrap'>
                   <h1 className='text-5xl font-medium'>
                     {lessonToggle
                       ? currentLesson?.lessonName
@@ -124,7 +124,7 @@ const CourseViewer = ({
             {/* MD SCREENS */}
             <div className='hidden md:block'>
               <ul className='list-disc'>
-                {displayPreRequisites(prerequisites)}
+                {displayPreRequisites(coursePrerequisites)}
               </ul>
             </div>
 
@@ -145,7 +145,7 @@ const CourseViewer = ({
               </p>
 
               <ul className='list-disc'>
-                {displayPreRequisites(prerequisites)}
+                {displayPreRequisites(coursePrerequisites)}
               </ul>
 
               <h3 className='font-medium'>Related Courses</h3>
