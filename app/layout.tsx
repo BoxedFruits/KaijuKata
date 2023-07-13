@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`overflow-x-hidden ${inter.className}`}>
         {children}
-        <Image src="/scientists.png" width={1400} height={400} alt="scientists"></Image>
+        <Image src="/scientists_fixed.png" width={1400} height={400} alt="scientists"></Image>
         <div className="w-full py-4 px-12 rounded-none border-t-[1px] border-light-border bg-light-bg mt-auto">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
