@@ -29,7 +29,7 @@ export default function Home() {
       <div className="flex min-h-screen flex-col items-center justify-between p-24" style={{ height: "100vh" }}>
         <Image className="absolute z-0 bottom-0 left-1/3" src="/terminal.gif" alt="terminal" width={1889} height={564}></Image>
         <div className="flex absolute w-full h-full top-0" style={{ background: "linear-gradient(#10101000 50%,#00000014 10%,#000000)" }}></div>
-        <div className="z-10 md:mt-20">
+        <div className="z-10 md:mt-16">
           <h1 className={`${bowlby_one_sc.className} mb-12 tracking-widest text-5xl md:text-9xl text-[#DE2323]`}>Kaiju Kata</h1>
           <div className={bungee.className}>
             <div>
