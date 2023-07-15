@@ -33,13 +33,15 @@ const CourseViewer = ({
     return (
       <>
         <h3 className='mb-1 font-medium text-[15px]'>Prerequisites</h3>
-        {coursePrerequisites.map((coursePrerequisites: string, index: number) => {
-          return (
-            <li className='ml-6 font-light text-sm' key={index}>
-              {coursePrerequisites}
-            </li>
-          );
-        })}
+        {coursePrerequisites.map(
+          (coursePrerequisites: string, index: number) => {
+            return (
+              <li className='ml-6 font-light text-sm' key={index}>
+                {coursePrerequisites}
+              </li>
+            );
+          }
+        )}
       </>
     );
   };
@@ -47,7 +49,7 @@ const CourseViewer = ({
   return (
     <>
       <div className='flex grow flex-col h-full md:h-auto md:flex-row bg-gradient-to-r from-zinc-600 to-zinc-800'>
-        <div className='left-side pt-4 pl-7 md:overflow-auto md:w-5/12 md:bg-zinc-800'>
+        <div className='left-side pt-4 pl-6 pr-6 md:overflow-auto md:w-5/12 md:bg-zinc-800'>
           <div className='flex items-center justify-between'>
             <h1 className='mb-0 text-3xl font-medium md:hidden'>
               {lessonToggle && currentLesson
@@ -66,8 +68,7 @@ const CourseViewer = ({
               }
             </div>
           </div>
-
-          <div className='hidden md:block'>
+          <div className='hidden w-full md:block'>
             <LessonList
               lessons={lessons}
               currentLesson={currentLesson}

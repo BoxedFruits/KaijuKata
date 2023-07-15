@@ -2,7 +2,7 @@ export interface ILessonItem {
 	lessonName: string
 	lessonDescription: string
 	lessonPath: string
-  lessonPrerequisites: string[]
+	lessonPrerequisites: string[]
 	thumbnailPath: string
 }
 
@@ -19,11 +19,11 @@ const LessonList = ({
 }: LessonListProps) => {
   return (
     <>
-      <ol className='lesson-list'>
+      <ol className='lesson-list '>
         {lessons.map((lesson, index) => {
           return (
             <li
-              className='mb-6 bg-zinc-700 p-2 rounded-xl'
+              className='mb-6 bg-[#B96060] p-2 rounded-xl'
               key={index}
               onClick={() => setCurrentLesson(lesson)}
             >
@@ -34,11 +34,11 @@ const LessonList = ({
                     alt={lesson.lessonName}
                   />
                 </div>
-                <div className='lesson-info'>
-                  <h3 className='text-xs font-medium mb-1'>
+                <div className='lesson-info max-w-[400px]'>
+                  <h3 className='text-sm font-bold mb-1'>
                     {lesson.lessonName}
                   </h3>
-                  <p className='text-xs mb-0'>
+                  <p className='text-xs mb-0 truncate'>
                     {lesson.lessonDescription}
                   </p>
                 </div>
