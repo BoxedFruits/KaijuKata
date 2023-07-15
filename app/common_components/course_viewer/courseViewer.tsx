@@ -46,6 +46,30 @@ const CourseViewer = ({
     );
   };
 
+  const displayRelatedCourses = () => {
+    return (
+      <div>
+        <h3 className='font-medium mb-0'>Related Courses</h3>
+        <div className='flex mb-4'>
+          <div>
+            <img
+              src={courseThumbnail}
+              alt='Course thumbnail'
+              className='rounded-tl-lg rounded-bl-lg max-h-[150px] '
+            />
+          </div>
+          <div className='bg-[#B96060] rounded-tr-lg rounded-br-lg px-4 py-4 max-h-[150px] w-full'>
+            <h4 className='text-xs mb-2 text-black'>Lesson Name</h4>
+            <p className='text-[10px] leading-none'>
+							Lorem ipsum dolor sit amet consectetur adipisicing
+							elit.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       <div className='flex grow flex-col h-full md:h-auto md:flex-row bg-gradient-to-r from-zinc-600 to-zinc-800'>
@@ -59,7 +83,7 @@ const CourseViewer = ({
             <h1 className='hidden md:block md:mb-7 md:text-5xl'>
               {courseName}
             </h1>
-            <div className='pr-7 md:hidden'>
+            <div className='min-w-[150px] md:hidden'>
               {
                 <LessonCourseToggle
                   lessonToggle={lessonToggle}
@@ -102,31 +126,43 @@ const CourseViewer = ({
                       : courseThumbnail
                   }
                   alt='course thumbnail'
-                  className='rounded-lg object-cover min-w-[400px] md:max-w-[50%] min-h-[400px]'
+                  className='rounded-xl object-cover min-w-[400px] md:max-w-[50%] min-h-[400px]'
                 />
 
-                <div className='hidden md:flex flex-col pl-6 whitespace-pre-wrap'>
+                <div className='hidden md:flex flex-col p-4 ml-2 rounded-xl whitespace-pre-wrap bg-black opacity-80'>
                   <h1 className='text-5xl font-medium'>
                     {lessonToggle
                       ? currentLesson?.lessonName
                       : courseName}
                   </h1>
-                  <p className='mb-1'>
-                    {lessonToggle
-                      ? currentLesson?.lessonDescription
-                      : courseDescription}
-                  </p>
-                  <p className='italic text-[10px] mt-2'>
+                  <ul className='list-disc'>
+                    {displayPreRequisites(
+                      coursePrerequisites
+                    )}
+                  </ul>
+                  <p className='italic text-[10px] absolute bottom-0'>
 										Contributors: BoxedFruit, Nizzle
                   </p>
                 </div>
               </div>
             </div>
+
             {/* MD SCREENS */}
+            <div className='hidden md:block bg-black opacity-80 p-4 rounded-xl mb-4'>
+              <h2 className='text-[40px] font-medium mb-6'>
+                {lessonToggle
+                  ? "Lesson Summary"
+                  : "Course Summary"}
+              </h2>
+              <p className='mb-1 whitespace-pre-line'>
+                {lessonToggle
+                  ? currentLesson?.lessonDescription
+                  : courseDescription}
+              </p>
+            </div>
+
             <div className='hidden md:block'>
-              <ul className='list-disc'>
-                {displayPreRequisites(coursePrerequisites)}
-              </ul>
+              {displayRelatedCourses()}
             </div>
 
             {/* SM SCREENS */}
@@ -136,38 +172,21 @@ const CourseViewer = ({
                   ? "Lesson Summary"
                   : "Course Summary"}
               </h2>
-              <p className=''>
+              <p className='whitespace-pre-line'>
                 {lessonToggle
                   ? currentLesson?.lessonDescription
                   : courseDescription}
-              </p>
-              <p className='italic text-xs'>
-								Contributors: BoxedFruit, Nizzle
               </p>
 
               <ul className='list-disc'>
                 {displayPreRequisites(coursePrerequisites)}
               </ul>
 
-              <h3 className='font-medium'>Related Courses</h3>
-              <div className='flex mb-4 w-[100%]'>
-                <div>
-                  <img
-                    src={courseThumbnail}
-                    alt='Course thumbnail'
-                    className='rounded-tl-lg rounded-bl-lg max-h-[150px] '
-                  />
-                </div>
-                <div className='bg-[#B96060] rounded-tr-lg rounded-br-lg px-4 py-4 max-h-[150px]'>
-                  <h4 className='text-xs mb-2 text-black'>
-										Lesson Name
-                  </h4>
-                  <p className='text-[10px] leading-none'>
-										Lorem ipsum dolor sit amet consectetur
-										adipisicing elit.
-                  </p>
-                </div>
-              </div>
+              <p className='italic text-xs'>
+								Contributors: BoxedFruit, Nizzle
+              </p>
+
+              {displayRelatedCourses()}
             </div>
           </div>
           <div className='md:hidden'>
