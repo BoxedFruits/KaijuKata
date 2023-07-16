@@ -46,6 +46,11 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="animate-bounce">
+          <Image className="relative" src="/down-arrow.svg" height={20} width={30} alt="down arrow"></Image>
+          <Image className="relative -top-4" src="/down-arrow.svg" height={20} width={30} alt="down arrow"></Image>
+          <Image className="relative -top-8" src="/down-arrow.svg" height={20} width={30} alt="down arrow"></Image>
+        </div>
       </div>
       <div className="h-5/6 w-full mt-44">
         <div className={`${bowlby_one_sc.className} text-5xl flex justify-center mb-16`}>Courses</div>
