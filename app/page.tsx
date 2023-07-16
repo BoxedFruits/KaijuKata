@@ -30,7 +30,11 @@ export default function Home() {
         <Image className="absolute z-0 bottom-0 left-1/3" src="/terminal.gif" alt="terminal" width={1889} height={564}></Image>
         <div className="flex absolute w-full h-full top-0" style={{ background: "linear-gradient(#10101000 50%,#00000014 10%,#000000)" }}></div>
         <div className="z-10 md:mt-16">
-          <h1 className={`${bowlby_one_sc.className} mb-12 tracking-widest text-5xl md:text-9xl text-[#DE2323]`}>Kaiju Kata</h1>
+          <h1 className={`${bowlby_one_sc.className} mb-12 tracking-widest text-5xl md:text-9xl text-[#DE2323] bg-clip-text`} style={{
+            backgroundImage: "url('/skyline.gif')",
+            WebkitTextFillColor: "#ff3a3a59"
+          }}
+          >Kaiju Kata</h1>
           <div className={bungee.className}>
             <div>
               <h2 className="mb-1 text-sm md:text-2xl">Become a shadowy super-coder.</h2>
@@ -51,6 +55,6 @@ export default function Home() {
           <CourseTile imagePath="/egyptian_bird.jpg" text="Cairo" link="cairo_lessons"></CourseTile>
         </div>
       </div>
-    </main>
+    </main >
   );
 }
