@@ -103,14 +103,12 @@ const CourseViewer = ({
         <div className='right-side px-7 pt-5 md:pt-20 md:w-7/12 md:bg-zinc-700 md:overflow-auto'>
           <div className='course-info'>
             <div className='mb-5 flex align-middle items-center justify-center'>
-              <div className='relative flex'>
+              <div className='relative flex grow'>
                 <div className='hidden z-20 md:block md:absolute top-[-3rem] left-0'>
-                  {
-                    <LessonCourseToggle
-                      lessonToggle={lessonToggle}
-                      setLessonToggle={setLessonToggle}
-                    />
-                  }
+                  <LessonCourseToggle
+                    lessonToggle={lessonToggle}
+                    setLessonToggle={setLessonToggle}
+                  />
                 </div>
                 <div className='absolute top-4 left-4 backdrop-blur-2xl rounded-lg p-2'>
                   <p className='font-semibold m-0'>
@@ -126,10 +124,10 @@ const CourseViewer = ({
                       : courseThumbnail
                   }
                   alt='course thumbnail'
-                  className='rounded-xl object-cover min-w-[400px] md:max-w-[50%] min-h-[400px]'
+                  className='rounded-xl object-cover w-full md:w-5/12'
                 />
 
-                <div className='hidden md:flex flex-col p-4 ml-2 rounded-xl whitespace-pre-wrap bg-black opacity-80'>
+                <div className='hidden md:flex flex-col p-4 ml-2 rounded-xl whitespace-pre-wrap bg-black opacity-80 md:w-7/12'>
                   <h1 className='text-5xl font-medium'>
                     {lessonToggle
                       ? currentLesson?.lessonName
@@ -190,6 +188,7 @@ const CourseViewer = ({
             </div>
           </div>
           <div className='md:hidden'>
+            <h3 className='font-medium mb-0'>Lesson List</h3>
             <LessonList
               lessons={lessons}
               currentLesson={currentLesson}
