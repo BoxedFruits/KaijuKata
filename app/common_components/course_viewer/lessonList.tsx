@@ -1,55 +1,45 @@
-"use client";
-
-import { useState } from "react";
-import DialogBox from "../dialogBox";
-
 export interface ILessonItem {
 	lessonName: string
 	lessonDescription: string
 	lessonPath: string
+	lessonPrerequisites: string[]
 	thumbnailPath: string
 }
 
 interface LessonListProps {
 	lessons: ILessonItem[]
+	currentLesson: ILessonItem | null
+	setCurrentLesson: (lesson: ILessonItem | null) => void
 }
 
-const LessonList = ({ lessons }: LessonListProps) => {
-  const [ modalIsOpen, setModalIsOpen ] = useState(false);
-  const [ currentLesson, setCurrentLesson ] = useState<ILessonItem | null>(null);
-
-  const handleLessonClick = (lesson: ILessonItem) => {
-    setCurrentLesson(lesson);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setCurrentLesson(null);
-    setModalIsOpen(false);
-  };
-
+const LessonList = ({
+  lessons,
+  currentLesson,
+  setCurrentLesson,
+}: LessonListProps) => {
   return (
     <>
       <ol className='lesson-list'>
         {lessons.map((lesson, index) => {
           return (
             <li
-              className='mb-6 bg-zinc-700 p-2 rounded-xl'
+              className='mb-6 bg-[#B96060] p-2 rounded-xl flex'
               key={index}
-              onClick={() => handleLessonClick(lesson)}
+              onClick={() => setCurrentLesson(lesson)}
             >
-              <div className='lesson-item flex items-center'>
-                <div className='lesson-thumbnail mr-2'>
+              <div className='lesson-item flex'>
+                <div className='lesson-thumbnail mr-2 min-w-[30%] flex items-center'>
                   <img
                     src={lesson.thumbnailPath}
                     alt={lesson.lessonName}
+                    className='rounded-xl'
                   />
                 </div>
-                <div className='lesson-info'>
-                  <h3 className='text-xs font-medium mb-1'>
+                <div className='lesson-info h-[100px] overflow-hidden'>
+                  <h3 className='text-sm font-bold mb-1'>
                     {lesson.lessonName}
                   </h3>
-                  <p className='text-xs mb-0'>
+                  <p className='text-xs h-full'>
                     {lesson.lessonDescription}
                   </p>
                 </div>
@@ -58,22 +48,6 @@ const LessonList = ({ lessons }: LessonListProps) => {
           );
         })}
       </ol>
-
-      {modalIsOpen && (
-        <div
-          className='fixed inset-0 bg-black bg-opacity-70 z-10'
-          onClick={closeModal}
-        >
-          {currentLesson && (
-            <DialogBox
-              title={currentLesson.lessonName}
-              description={currentLesson.lessonDescription}
-              link={currentLesson.lessonPath}
-              closeModal={closeModal}
-            />
-          )}
-        </div>
-      )}
     </>
   );
 };

@@ -1,57 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+	color: rgb(var(--foreground-rgb));
+	background: linear-gradient(
+			to bottom,
+			transparent,
+			rgb(var(--background-end-rgb))
+		)
+		rgb(var(--background-start-rgb));
 
-  flex-direction: column;
-  min-height: 100vh;
-  max-height: 100vh;
-  display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	max-height: 100vh;
+	display: flex;
 }
 
-input[type="radio"], input[type="checkbox"]{
-  /* Add if not using autoprefixer */
-  -webkit-appearance: none;
-  appearance: none;
-  /* For iOS < 15 to remove gradient background */
-  background-color: #fff;
-  /* Not removed via appearance */
-  margin: 0;
+input[type='radio'],
+input[type='checkbox'] {
+	/* Add if not using autoprefixer */
+	-webkit-appearance: none;
+	appearance: none;
+	/* For iOS < 15 to remove gradient background */
+	background-color: #fff;
+	/* Not removed via appearance */
+	margin: 0;
 }
 
 h1 {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+	font-size: 1.875rem;
+	line-height: 2.25rem;
 }
 
 h2 {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+	font-size: 1.25rem;
+	line-height: 1.75rem;
 }
 
 p,
 li {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
 }
 
 h1,
@@ -59,7 +64,6 @@ h2,
 h3,
 p,
 ul,
-code
-{
-  margin-bottom: 1rem;
+code {
+	margin-bottom: 1rem;
 }
