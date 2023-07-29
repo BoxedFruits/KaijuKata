@@ -36,7 +36,7 @@ const TwoPanelLayout = ({
   return (
     <div className="flex flex-row min-h-full grow">
       <div className="left-panel relative flex grow rounded-md pb-6 pt-4 pl-2 pr-1" style={{ width: panelWidths.leftPanelWidth }}>
-        <div className="rounded-md backdrop-blur-2xl dark:bg-zinc-600/30 border-slate-900">
+        <div className="rounded-md backdrop-blur-2xl dark:bg-zinc-600/30 border-slate-900 overflow-x-hidden ">
           {childrenArray[0]}
         </div>
       </div>
