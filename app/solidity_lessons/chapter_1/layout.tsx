@@ -1,17 +1,21 @@
+import Footer from "@/app/common_components/footer";
 import Navbar from "../../common_components/navbar";
 
-const LessonLayout = ({
+const RootLayout = ({
   children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode
 }) => {
   return (
     <>
-      <Navbar/>
-      <main className='flex min-h-full grow'>{children}</main>
+      <Navbar />
+      <main className='flex min-h-full grow flex-col'>
+        {children}
+        <Footer />
+      </main>
     </>
   );
 };
 
 
-export default LessonLayout;
+export default RootLayout;
