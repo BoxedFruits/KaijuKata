@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import LessonList, { ILessonItem } from "./lessonList";
 import LessonCourseToggle from "./lessonCourseToggle";
 
@@ -20,13 +20,7 @@ const CourseViewer = ({
   lessons,
 }: ICourseViewer) => {
   const [ lessonToggle, setLessonToggle ] = useState<boolean>(true);
-  const [ currentLesson, setCurrentLesson ] = useState<ILessonItem | null>(null);
-
-  useEffect(() => {
-    if (lessons.length > 0) {
-      setCurrentLesson(lessons[0]);
-    }
-  }, [lessons]);
+  const [ currentLesson, setCurrentLesson ] = useState<ILessonItem | null>(lessons[0]);
 
   const displayPreRequisites = (coursePrerequisites?: string[]) => {
     if (!coursePrerequisites) return null;
