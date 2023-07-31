@@ -43,7 +43,7 @@ const TwoPanelLayout = ({
       <div className="group flex items-center justify-center transition hover:bg-sky-500
             active:bg-sky-500 dark:hover:bg-dark-blue-s hover:cursor-col-resize"
       style={{ width: ".4rem" }}
-      onMouseDown={(e) => handleMouseDown(e)}
+      onMouseDown={handleMouseDown}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 14" width="2" height="14" fill="currentColor"
           className="text-gray-5 dark:text-dark-gray-5 transition -translate-y-6
