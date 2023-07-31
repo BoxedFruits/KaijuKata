@@ -40,7 +40,7 @@ const TwoPanelLayout = ({
           {childrenArray[0]}
         </div>
       </div>
-      <div className="dividerthinng group flex h-full items-center justify-center transition hover:bg-sky-500
+      <div className="group flex items-center justify-center transition hover:bg-sky-500
             active:bg-sky-500 dark:hover:bg-dark-blue-s hover:cursor-col-resize"
       style={{ width: ".4rem" }}
       onMouseDown={(e) => handleMouseDown(e)}
