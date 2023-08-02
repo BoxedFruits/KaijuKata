@@ -5,11 +5,11 @@ import LessonList, { ILessonItem } from "./lessonList";
 import LessonCourseToggle from "./lessonCourseToggle";
 
 export interface ICourseViewer {
-	courseName: string
-	courseDescription: string
-	courseThumbnail: string
-	coursePrerequisites?: string[]
-	lessons: ILessonItem[]
+  courseName: string
+  courseDescription: string
+  courseThumbnail: string
+  coursePrerequisites?: string[]
+  lessons: ILessonItem[]
 }
 
 const CourseViewer = ({
@@ -20,13 +20,7 @@ const CourseViewer = ({
   lessons,
 }: ICourseViewer) => {
   const [ lessonToggle, setLessonToggle ] = useState<boolean>(true);
-  const [ currentLesson, setCurrentLesson ] = useState<ILessonItem | null>(null);
-
-  useEffect(() => {
-    if (lessons.length > 0) {
-      setCurrentLesson(lessons[0]);
-    }
-  }, [lessons]);
+  const [ currentLesson, setCurrentLesson ] = useState<ILessonItem | null>(lessons[0]);
 
   const displayPreRequisites = (coursePrerequisites?: string[]) => {
     if (!coursePrerequisites) return null;
@@ -61,8 +55,8 @@ const CourseViewer = ({
           <div className='bg-[#B96060] rounded-tr-lg rounded-br-lg px-4 py-4 max-h-[150px] w-full'>
             <h4 className='text-xs mb-2 text-black'>Lesson Name</h4>
             <p className='text-[10px] leading-none'>
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit.
+              Lorem ipsum dolor sit amet consectetur adipisicing
+              elit.
             </p>
           </div>
         </div>
@@ -84,12 +78,10 @@ const CourseViewer = ({
               {courseName}
             </h1>
             <div className='min-w-[150px] md:hidden'>
-              {
-                <LessonCourseToggle
-                  lessonToggle={lessonToggle}
-                  setLessonToggle={setLessonToggle}
-                />
-              }
+              <LessonCourseToggle
+                lessonToggle={lessonToggle}
+                setLessonToggle={setLessonToggle}
+              />
             </div>
           </div>
           <div className='hidden w-full md:block'>
@@ -112,7 +104,7 @@ const CourseViewer = ({
                 </div>
                 <div className='absolute top-4 left-4 backdrop-blur-2xl rounded-lg p-2'>
                   <p className='font-semibold m-0'>
-										Completed:
+                    Completed:
                     <span className='font-normal'> No</span>
                   </p>
                 </div>
@@ -139,7 +131,7 @@ const CourseViewer = ({
                     )}
                   </ul>
                   <p className='italic text-[10px] absolute bottom-0'>
-										Contributors: BoxedFruit, Nizzle
+                    Contributors: BoxedFruit, Nizzle
                   </p>
                 </div>
               </div>
@@ -181,7 +173,7 @@ const CourseViewer = ({
               </ul>
 
               <p className='italic text-xs'>
-								Contributors: BoxedFruit, Nizzle
+                Contributors: BoxedFruit, Nizzle
               </p>
 
               {displayRelatedCourses()}
