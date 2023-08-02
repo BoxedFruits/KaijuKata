@@ -19,8 +19,8 @@ const CourseViewer = ({
   coursePrerequisites,
   lessons,
 }: ICourseViewer) => {
-  const [ lessonToggle, setLessonToggle ] = useState<boolean>(true);
-  const [ currentLesson, setCurrentLesson ] = useState<ILessonItem | null>(lessons[0]);
+  const [lessonToggle, setLessonToggle] = useState<boolean>(true);
+  const [currentLesson, setCurrentLesson] = useState<ILessonItem | null>(lessons[0]);
 
   const displayPreRequisites = (coursePrerequisites?: string[]) => {
     if (!coursePrerequisites) return null;
@@ -68,6 +68,12 @@ const CourseViewer = ({
     <>
       <div className='flex grow flex-col h-full md:h-auto md:flex-row bg-gradient-to-r from-zinc-600 to-zinc-800'>
         <div className='left-side pt-4 pl-6 pr-6 md:overflow-auto md:w-5/12 md:bg-zinc-800'>
+          <div className='md:hidden mb-1'>
+            <LessonCourseToggle
+              lessonToggle={lessonToggle}
+              setLessonToggle={setLessonToggle}
+            />
+          </div>
           <div className='flex items-center justify-between'>
             <h1 className='mb-0 text-3xl font-medium md:hidden'>
               {lessonToggle && currentLesson
@@ -77,12 +83,6 @@ const CourseViewer = ({
             <h1 className='hidden md:block md:mb-7 md:text-5xl'>
               {courseName}
             </h1>
-            <div className='min-w-[150px] md:hidden'>
-              <LessonCourseToggle
-                lessonToggle={lessonToggle}
-                setLessonToggle={setLessonToggle}
-              />
-            </div>
           </div>
           <div className='hidden w-full md:block'>
             <LessonList
