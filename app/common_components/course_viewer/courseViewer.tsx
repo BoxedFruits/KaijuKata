@@ -93,8 +93,8 @@ const CourseViewer = ({
             />
           </div>
         </div>
-        <div className='right-side px-7 pt-5 md:pt-5 md:w-7/12 md:bg-zinc-700 md:overflow-auto'>
-          <div className='hidden z-20 md:block left-0 mb-7'>
+        <div className='right-side md:w-7/12 md:bg-zinc-700 md:overflow-auto px-7 pt-4'>
+          <div className='hidden md:block p-2 mb-2'>
             <LessonCourseToggle
               lessonToggle={lessonToggle}
               setLessonToggle={setLessonToggle}
