@@ -20,7 +20,7 @@ const CourseViewer = ({
   lessons,
 }: ICourseViewer) => {
   const [lessonToggle, setLessonToggle] = useState<boolean>(true);
-  const [currentLesson, setCurrentLesson] = useState<ILessonItem | null>(lessons[0]);
+  const [currentLesson, setCurrentLesson] = useState<ILessonItem>(lessons[0]);
 
   const displayPreRequisites = (coursePrerequisites?: string[]) => {
     if (!coursePrerequisites) return null;
@@ -72,6 +72,7 @@ const CourseViewer = ({
             <LessonCourseToggle
               lessonToggle={lessonToggle}
               setLessonToggle={setLessonToggle}
+              lessonPath={currentLesson?.lessonPath}
             />
           </div>
           <div className='flex items-center justify-between'>
@@ -92,16 +93,17 @@ const CourseViewer = ({
             />
           </div>
         </div>
-        <div className='right-side px-7 pt-5 md:pt-20 md:w-7/12 md:bg-zinc-700 md:overflow-auto'>
+        <div className='right-side px-7 pt-5 md:pt-5 md:w-7/12 md:bg-zinc-700 md:overflow-auto'>
+          <div className='hidden z-20 md:block left-0 mb-7'>
+            <LessonCourseToggle
+              lessonToggle={lessonToggle}
+              setLessonToggle={setLessonToggle}
+              lessonPath={currentLesson?.lessonPath}
+            />
+          </div>
           <div className='course-info'>
             <div className='mb-5 flex align-middle items-center justify-center'>
               <div className='relative flex grow'>
-                <div className='hidden z-20 md:block md:absolute top-[-3rem] left-0'>
-                  <LessonCourseToggle
-                    lessonToggle={lessonToggle}
-                    setLessonToggle={setLessonToggle}
-                  />
-                </div>
                 <div className='absolute top-4 left-4 backdrop-blur-2xl rounded-lg p-2'>
                   <p className='font-semibold m-0'>
                     Completed:

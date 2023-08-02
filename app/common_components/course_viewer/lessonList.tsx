@@ -9,7 +9,7 @@ export interface ILessonItem {
 interface LessonListProps {
 	lessons: ILessonItem[]
 	currentLesson: ILessonItem | null
-	setCurrentLesson: (lesson: ILessonItem | null) => void
+	setCurrentLesson: (lesson: ILessonItem) => void
 }
 
 const LessonList = ({
