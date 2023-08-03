@@ -31,7 +31,7 @@ const LessonCourseToggle = ({
       </div>
       <div>
         <Link className='text-white text-sm font-medium' href={lessonPath}>
-          <button className='py-1 px-2 text-sm bg-gray-300 rounded-lg text-black font-bold'>Start Lesson</button>
+          <button className='py-1 px-2 text-sm bg-gray-300 rounded-lg text-red-600 font-bold'>Start Lesson</button>
         </Link>
       </div>
     </div>
